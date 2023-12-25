@@ -10,7 +10,6 @@ import lombok.*;
 @AllArgsConstructor
 public class CommentCreateRequest{
     private String content;
-    private String writer;
     private Long parentId;
 
     public Comment toEntity(Board board,Member member) {
@@ -18,7 +17,6 @@ public class CommentCreateRequest{
                 .board(board)
                 .member(member)
                 .content(content)
-                .writer(writer)
 //                .commentChildren(commentCreateRequest.getCommentChildren().stream().map(CommentCreateRequest::toEntity).collect(Collectors.toList()))
                 .build();
     }

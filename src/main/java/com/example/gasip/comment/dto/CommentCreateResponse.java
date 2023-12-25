@@ -26,7 +26,6 @@ public class CommentCreateResponse {
                 .postId(comment.getBoard().getPostId())
                 .memberId(comment.getMember().getMemberId())
                 .content(comment.getContent())
-                .writer(comment.getWriter())
                 .parentId(comment.getParentComment().getCommentId())
                 .build();
         }
@@ -36,7 +35,6 @@ public class CommentCreateResponse {
                 .postId(comment.getBoard().getPostId())
                 .memberId(comment.getMember().getMemberId())
                 .content(comment.getContent())
-                .writer(comment.getWriter())
                 .build();
         }
 

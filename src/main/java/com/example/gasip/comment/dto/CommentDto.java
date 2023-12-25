@@ -21,7 +21,6 @@ public class CommentDto implements Serializable {
     private Long postId;
     private Long memberId;
     private String content;
-    private String writer;
     private Long commentLike;
     private Long parentId;
     private List<CommentDto> commentChildren = new ArrayList<>();
@@ -33,7 +32,6 @@ public class CommentDto implements Serializable {
                 .postId(comment.getBoard().getPostId())
                 .memberId(comment.getMember().getMemberId())
                 .content(comment.getContent())
-                .writer(comment.getWriter())
                 .parentId(comment.getParentComment().getCommentId())
                 .build();
         }
@@ -43,7 +41,6 @@ public class CommentDto implements Serializable {
                 .postId(comment.getBoard().getPostId())
                 .memberId(comment.getMember().getMemberId())
                 .content(comment.getContent())
-                .writer(comment.getWriter())
                 .commentChildren(comment.getCommentChildren().stream().map(CommentDto::fromEntity).collect(Collectors.toList()))
                 .build();
         }

@@ -26,8 +26,7 @@ public class Comment extends BaseTimeEntity {
     private Long commentId;
     @Column(nullable = false)
     private String content;
-    @Column(nullable = false)
-    private String writer;
+
     private Long commentLike;
 
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
@@ -50,7 +49,6 @@ public class Comment extends BaseTimeEntity {
         Comment comment = new Comment();
         comment.content = content;
         comment.board = board;
-        comment.writer = writer;
         comment.parentComment = parentComment;
         return comment;
     }
