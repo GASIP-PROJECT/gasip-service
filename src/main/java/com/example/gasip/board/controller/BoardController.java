@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.*;
 public class BoardController {
     private final BoardService boardService;
     @PostMapping("{profId}")
-    @Operation(summary = "게시글 생성 요청", description = "게시글을 생성을 요청합니다.", tags = { "Board Controller" })
+    @Operation(summary = "게시글 생성 요청", description = "게시글을 생성을 요청합니다.", tags = {"Board Controller"})
     public ResponseEntity<?> createBoard(
         @AuthenticationPrincipal MemberDetails memberDetails,
         @RequestBody @Valid BoardCreateRequest boardCreateRequest,
@@ -82,7 +82,6 @@ public class BoardController {
                     boardService.editBoard(memberDetails,boardId,boardUpdateRequest)
                 )
             );
-
     }
 
     @DeleteMapping("/{boardId}")
@@ -97,6 +96,5 @@ public class BoardController {
                     boardService.deleteBoard(memberDetails,boardId)
                 )
             );
-
     }
 }
