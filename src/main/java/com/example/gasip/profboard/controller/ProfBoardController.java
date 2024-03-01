@@ -2,7 +2,7 @@ package com.example.gasip.profboard.controller;
 
 import com.example.gasip.profboard.dto.BoardCreateRequest;
 import com.example.gasip.profboard.dto.BoardUpdateRequest;
-import com.example.gasip.profboard.service.BoardService;
+import com.example.gasip.profboard.service.ProfBoardService;
 import com.example.gasip.global.api.ApiUtils;
 import com.example.gasip.global.security.MemberDetails;
 import io.swagger.v3.oas.annotations.Operation;
@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/prof/boards")
 @RequiredArgsConstructor
 public class ProfBoardController {
-    private final BoardService boardService;
+    private final ProfBoardService profBoardService;
     @PostMapping("{profId}")
     @Operation(summary = "게시글 생성 요청", description = "게시글을 생성을 요청합니다.", tags = { "Board Controller" })
     public ResponseEntity<?> createBoard(
@@ -29,7 +29,7 @@ public class ProfBoardController {
             .status(HttpStatus.CREATED)
             .body(
                 ApiUtils.success(
-                    boardService.createBoard(boardCreateRequest, memberDetails, profId)
+                    profBoardService.createBoard(boardCreateRequest, memberDetails, profId)
                 )
             );
     }
@@ -41,7 +41,7 @@ public class ProfBoardController {
             .ok()
             .body(
                 ApiUtils.success(
-                    boardService.findAllBoard(pageable)
+                    profBoardService.findAllBoard(pageable)
                 )
             );
     }
@@ -52,7 +52,7 @@ public class ProfBoardController {
         return ResponseEntity
             .ok()
             .body(
-                ApiUtils.success(boardService.findBoardId(postId))
+                ApiUtils.success(profBoardService.findBoardId(postId))
             );
     }
 
@@ -63,7 +63,7 @@ public class ProfBoardController {
         return ResponseEntity
             .ok()
             .body(
-                ApiUtils.success(boardService.findProfBoardDetail(profId,pageable))
+                ApiUtils.success(profBoardService.findProfBoardDetail(profId,pageable))
             );
     }
 //    @GetMapping("/details/{postId}")
@@ -95,7 +95,7 @@ public class ProfBoardController {
             .ok()
             .body(
                 ApiUtils.success(
-                    boardService.editBoard(memberDetails,boardId,boardUpdateRequest)
+                    profBoardService.editBoard(memberDetails,boardId,boardUpdateRequest)
                 )
             );
 
@@ -110,7 +110,7 @@ public class ProfBoardController {
             .ok()
             .body(
                 ApiUtils.success(
-                    boardService.deleteBoard(memberDetails,boardId)
+                    profBoardService.deleteBoard(memberDetails,boardId)
                 )
             );
 

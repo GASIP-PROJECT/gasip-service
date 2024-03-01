@@ -1,7 +1,7 @@
 package com.example.gasip.board.controller;
 
 import com.example.gasip.profboard.dto.BoardCreateRequest;
-import com.example.gasip.profboard.service.BoardService;
+import com.example.gasip.profboard.service.ProfBoardService;
 import com.example.gasip.global.api.ApiUtils;
 import com.example.gasip.global.security.MemberDetails;
 import jakarta.validation.Valid;
@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/boards")
 @RequiredArgsConstructor
 public class BoardController {
-    private final BoardService BoardService;
+    private final ProfBoardService ProfBoardService;
     @PostMapping("{profId}")
     public ResponseEntity<?> createBoard(
         @AuthenticationPrincipal MemberDetails memberDetails,
@@ -25,7 +25,7 @@ public class BoardController {
             .status(HttpStatus.CREATED)
             .body(
                 ApiUtils.success(
-                    BoardService.createBoard(boardCreateRequest, memberDetails, profId)
+                    ProfBoardService.createBoard(boardCreateRequest, memberDetails, profId)
                 )
             );
     }

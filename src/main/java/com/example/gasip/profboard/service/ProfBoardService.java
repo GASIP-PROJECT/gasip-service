@@ -20,7 +20,7 @@ import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
-public class BoardService {
+public class ProfBoardService {
 
     private final ProfBoardRepository boardRepository;
     private final MemberRepository memberRepository;
